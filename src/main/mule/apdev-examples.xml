@@ -18,8 +18,8 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 				<http:headers ><![CDATA[#[output application/java
 ---
 {
-	"name" : vars.firstName
-}]]]></http:headers>
+	"name" : attributes.queryParams.fname	
+	}]]]></http:headers>
 			</http:response>
 			<http:error-response reasonPhrase="Success" />
 		</http:listener>
@@ -35,8 +35,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</flow>
 	<flow name="goodbyeFlow" doc:id="776f0b68-efb3-4c0c-af70-f616cca5137a" >
 		<http:listener doc:name="Listener" doc:id="f6101bd9-a5b6-4680-98e7-11cca9beb3c3" config-ref="HTTP_Listener_config" path="/goodbye" allowedMethods="GET"/>
-		<set-payload value="#[upper('Goodbye') ++ ' ' ++ (attributes.queryParams.fullName default 'Maxine')]" doc:name="Goodbye" doc:id="cdc1abc9-aeba-4b58-97e2-14685775aa1a" />
-		<logger level="INFO" doc:name="Logger" doc:id="f5acafd4-92aa-4731-b1fe-e19c93e67742" message="#[attributes.queryParams.fullName]"/>
+		<set-payload value="#[upper('Goodbye') ++ ' ' ++ &#10;(attributes.queryParams.fullName default 'Maxine')]" doc:name="Goodbye" doc:id="cdc1abc9-aeba-4b58-97e2-14685775aa1a" />
+		<logger level="INFO" doc:name="fullName" doc:id="f5acafd4-92aa-4731-b1fe-e19c93e67742" message="#[attributes.queryParams.fullName]"/>
 	</flow>
-	<sub-flow name="apdev-examplesSub_Flow" doc:id="900349a4-a0d5-43bc-bbe0-f1ff61553253" />
 </mule>
