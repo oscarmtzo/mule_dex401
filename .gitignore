@@ -45,3 +45,12 @@ target/
 .mule/
 .DS_Store
 velocity.log
+.tooling-project
+
+
+# --------------- #
+# VSCode -configs #
+# --------------- #
+.vscode/
+launch.json
+settings.json
